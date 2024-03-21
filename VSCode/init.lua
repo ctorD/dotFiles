@@ -32,21 +32,44 @@ local toggle = {
     end,
     theme = function()
         vim.fn.VSCodeNotify("workbench.action.selectTheme")
-    end,
+    end
 }
 
 local whichkey = {
     show = function()
-      vim.fn.VSCodeNotify("whichkey.show")
+        vim.fn.VSCodeNotify("whichkey.show")
     end
-  }
+}
 
 local format = {
     formatDoc = function()
-      vim.fn.VSCodeNotify("editor.action.formatDocument")
+        vim.fn.VSCodeNotify("editor.action.formatDocument")
     end
-  }
+}
 
+local vue = {
+    jumpToTemplate = function()
+        vim.fn.VSCodeNotify("extension.jumptotemplate")
+    end,
+    jumpToStyle = function()
+        vim.fn.VSCodeNotify("extension.jumptostyle")
+    end,
+    jumpToScript = function()
+        vim.fn.VSCodeNotify("extension.jumptoscript")
+    end
+}
+
+local refactor = {
+    showMenu = function()
+        vim.fn.VSCodeNotify("editor.action.refactor")
+    end
+}
+
+local symbol = {
+    rename = function()
+        vim.fn.VSCodeNotify("editor.action.rename")
+    end
+}
 -- open config
 vim.cmd('nmap <leader>c :e C:/Users/DanielClarke/AppData/Local/nvim/init.lua<cr>')
 -- save
@@ -70,10 +93,10 @@ vim.keymap.set({'n', 'v'}, "<leader>tz", toggle.toggleZenMode)
 vim.keymap.set({'n', 'v'}, "<leader>te", toggle.toggleSideBarVisibility)
 vim.keymap.set({'n', 'v'}, "<leader>tt", toggle.theme)
 -- whichkey
-vim.keymap.set({'n', 'v'}, "<leader><leader>",  whichkey.show)
+vim.keymap.set({'n', 'v'}, "<leader><leader>", whichkey.show)
 
---format
-vim.keymap.set({'n', 'v'}, "<leader>f",  format.formatDoc)
+-- format
+vim.keymap.set({'n', 'v'}, "<leader>f", format.formatDoc)
 -- refactor
 vim.keymap.set({'v'}, "<leader>r", refactor.showMenu)
 vim.keymap.set({'n'}, "<leader>rr", symbol.rename)
@@ -84,8 +107,10 @@ vim.api.nvim_set_keymap('n', '<leader>rv', 'V%', {
     silent = true
 })
 
-
-
+-- Vue Jump Extension
+vim.keymap.set({'n', 'v'}, "<leader>vt", vue.jumpToTemplate)
+vim.keymap.set({'n', 'v'}, "<leader>vsc", vue.jumpToScript)
+vim.keymap.set({'n', 'v'}, "<leader>vst", vue.jumpToStyle)
 
 -- paste without overwriting
 vim.keymap.set('v', 'p', 'P')
