@@ -141,6 +141,16 @@
     "when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
   },
   {
+    "key": "ctrl+j",
+    "when": "codeActionMenuVisible",
+    "command": "selectNextCodeAction"
+  },
+  {
+    "key": "ctrl+k",
+    "when": "codeActionMenuVisible",
+    "command": "selectPrevCodeAction"
+  },
+  {
     "key": "alt+j",
     "command": "workbench.action.terminal.focus",
     "when": "!terminalFocus"
